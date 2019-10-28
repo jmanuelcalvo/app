@@ -17,7 +17,7 @@ https://etherpad.net/p/WSClaroEcuador
 # Jose Manuel Calvo I
 
 ## Agenda
-![alt text](Screen Shot 2019-10-28 at 9.20.41 AM.png)
+![Agenda](Agenda.png)
 
 # Recursos de OpenShift
 ```
