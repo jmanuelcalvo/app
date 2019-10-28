@@ -1,17 +1,22 @@
-# Cluster OpenShift Workshop Claro
-
-https://loadbalancer.1b84.example.opentlc.com/
-
-
-
-Notas Compartidas
-https://etherpad.net/p/WSClaroEcuador
-
-# Jose Manuel Calvo I
-
+# Acceso Cluster OpenShift Workshop Claro
+## Por Navegador
 ```
+https://loadbalancer.1b84.example.opentlc.com/
+```
+
+## Acceso por SSH a la maquina Bastion
+```
+ssh user40@bastion.1b84.example.opentlc.com
 oc login https://loadbalancer.1b84.internal:443 -u user40 -p redhat01
 ```
+
+## Notas Compartidas
+https://etherpad.net/p/WSClaroEcuador
+
+## Facilitador / Consultor Red Hat
+# Jose Manuel Calvo I
+
+
 
 # Recursos de OpenShift
 ```
