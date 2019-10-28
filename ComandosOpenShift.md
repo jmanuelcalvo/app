@@ -2,7 +2,7 @@
 oc login https://loadbalancer.1b84.internal:443 -u user40 -p redhat01
 
 # Recursos de OpenShift
-´´´
+```
 Projects
 Pods
 Services | svc
@@ -18,7 +18,7 @@ BuildConfig | bc
 Replication Controller | rc
 nodes				# cluster admin command
 users				# cluster admin command
-´´´
+```
 
 # Comandos de inicio de OCP
 oc types		     # Descripcion de los recursos de OpenShift
