@@ -1,5 +1,17 @@
-# Cluster OpenShift Claro
+# Cluster OpenShift Workshop Claro
+
+https://loadbalancer.1b84.example.opentlc.com/
+
+
+
+Notas Compartidas
+https://etherpad.net/p/WSClaroEcuador
+
+# Jose Manuel Calvo I
+
+```
 oc login https://loadbalancer.1b84.internal:443 -u user40 -p redhat01
+```
 
 # Recursos de OpenShift
 ```
@@ -21,6 +33,7 @@ users				# cluster admin command
 ```
 
 # Comandos de inicio de OCP
+```
 oc types		     # Descripcion de los recursos de OpenShift
 oc login [<cluster>]         # Loguearse a un cluster de OpenShift
 oc list project              # Listar proyectos
@@ -30,24 +43,27 @@ oc status		     # Estatus de login, proyecto actual
 oc whoami -t                 # Obtener los datos del usuario con el que esta conectado
 oc logout		     # Desloguearse de un cluster de OpenShift
 oc delete project	     # Elimiar un proyecto y todo sus recursos
+```
 
 ## Ejemplos
+```
 oc login https://loadbalancer.1b84.internal:443 -u user40 -p redhat01
 oc new-project myapp
 oc project myapp
 oc delete project myapp
-
+```
 
 # Creacion y eliminar de aplicaciones en OpenShift basadas en:
-
+```
 oc new-app -S php
 oc new-app -S --template=ruby 		# Plantillas de OCP
 oc new-app -S --image-stream=mysql	# Imagenes cargadas previamente en el servidor de registro de OCP
 oc new-app -S --docker-image=python	# Imagenes de un servidor de registro de Docker
-
+```
 ## Ejemplos
 
 OpenShift se encarga de conocer el lenguaje de programacion que se encuentra en el repo git y selecciona la imagen (is) requerida ej: php, ruby, java
+```
 oc new-app https://github.com/jmanuelcalvo/app.git --name=app1
 
 Se indica la imagen (is) especifica (centos/ruby-25-centos7) a utilizar y la fuente del codigo en un repositorio git
@@ -68,10 +84,11 @@ oc delete all -l app=app1
 
 Elimina todos los recursos dentro del proyecto (menos el proyecto)
 oc delete all --all
+```
 
 # Obtener informacion de OpenShift
 Argumentos del comando OC para obtener detalles de los recursos
-
+```
 get
 export
 describe
@@ -84,8 +101,9 @@ oc delete -h
 oc get -h
 
 y se pueden usar con la mayoria de recursos componiendo el comando de la siguiente forma:
-
+```
 ## Ejemplos
+```
 oc get pod
 oc get pod -o wide 		# Informacion adicional de los pod
 oc get service
@@ -93,11 +111,11 @@ oc describe pod php-5fs4
 oc describe service php
 oc edit svc php			# Los svcs pueden ser accedidos por FQDN dentro del mismo proyecto a traves del SVC_NAME.PROJECT_NAME.svc.cluster.local
 oc export svc,dc -l name=php
-
+```
 
 
 # Comandos para solucionar problemas
-
+```
 oc debug
 oc logs
 oc exec
@@ -106,9 +124,10 @@ oc describe
 oc rsync
 oc delete
 oc port-forwaed
-
+```
 
 ## Ejemplos
+```
 oc debug dc/test
 $ oc debug dc/test -o yaml
 oc logs -f <pod>	| 	oc logs -f php-5fs4
@@ -118,3 +137,4 @@ oc rsync <local_dir> <pod>:<pod_dir> -c <container>
 oc rsync <pod>:<pod_dir> <local_dir> -c <container>
 oc port-forward <pod> <local_port>:<remote_port>
 oc port-forward  mysql-1-t3qfb 13306:3306	| 	mysql -h127.0.0.1 -P13306 -uuser1 -pmypa55
+```
