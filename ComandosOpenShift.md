@@ -145,3 +145,7 @@ oc rsync <pod>:<pod_dir> <local_dir> -c <container>
 oc port-forward <pod> <local_port>:<remote_port>
 oc port-forward  mysql-1-t3qfb 13306:3306	| 	mysql -h127.0.0.1 -P13306 -uuser1 -pmypa55
 ```
+
+
+
+![Taller 1](taller1.md)
