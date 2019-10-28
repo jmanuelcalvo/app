@@ -126,6 +126,7 @@ oc export svc,dc -l name=php
 oc debug
 oc logs
 oc exec
+oc get ev
 oc rsh
 oc describe
 oc rsync
@@ -149,3 +150,18 @@ oc port-forward  mysql-1-t3qfb 13306:3306	| 	mysql -h127.0.0.1 -P13306 -uuser1 -
 
 
 ![Taller 1](taller1.md)
+!(taller1.md)
+
+
+
+# Almacenamiento
+
+## Creacion de configMap
+oc create cm myconf --from-literal APP_MSG="Test Message"
+oc set env dc/mydcname --from configmap/myconf
+
+
+
+
+oc create secret generic secret_name \ --from-file /home/demo/mysecret.tx
+oc set env dc/mydcname \
