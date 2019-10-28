@@ -148,9 +148,7 @@ oc port-forward  mysql-1-t3qfb 13306:3306	| 	mysql -h127.0.0.1 -P13306 -uuser1 -
 ```
 
 
-
-![Taller 1](taller1.md)
-!(taller1.md)
+[Taller 1](taller1.md)
 
 
 
@@ -159,11 +157,16 @@ oc port-forward  mysql-1-t3qfb 13306:3306	| 	mysql -h127.0.0.1 -P13306 -uuser1 -
 ## Creacion de configMap
 oc create cm myconf --from-literal APP_MSG="Test Message"
 oc set env dc/mydcname --from configmap/myconf
+oc rollout latest dc/mydcname
 
 curl http://app1-jmanuel-project1.apps.1b84.example.opentlc.com/var.php
 
+## Creacion de Secret
+vim myapp.sec
+username=user1
+password=pass1
+
+oc create secret generic mysecret --from-file myapp.sec
+oc set env dc/app1 --from secret/mysecret
 
 
-
-oc create secret generic secret_name \ --from-file /home/demo/mysecret.tx
-oc set env dc/mydcname \
