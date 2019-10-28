@@ -160,6 +160,8 @@ oc port-forward  mysql-1-t3qfb 13306:3306	| 	mysql -h127.0.0.1 -P13306 -uuser1 -
 oc create cm myconf --from-literal APP_MSG="Test Message"
 oc set env dc/mydcname --from configmap/myconf
 
+curl http://app1-jmanuel-project1.apps.1b84.example.opentlc.com/var.php
+
 
 
 
