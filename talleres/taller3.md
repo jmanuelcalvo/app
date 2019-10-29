@@ -100,9 +100,13 @@ route.route.openshift.io/wordpress exposed
 7. Ingresar por el navegador a la ruta para configurar el Wordpres
 ![Wordpress1](wordpress1.png)
 
+
 8. Adicionar los parametros puestos al momento de desplegar la BD
 Tenga en cuenta que los pods del mismo proyecto pueden visualizar sus servicios entre si a traves de un servicio de DNS interno llamado svc.cluster.local, por consiguiente la conexion se puede realizar de forma "interna entre los pods"
+
+Formato
 <svc>.<namespace>.svc.cluster.local
+
 ![Wordpress2](wordpress2.png)
 
 ![Wordpress3](wordpress3.png)
@@ -111,7 +115,7 @@ Tenga en cuenta que los pods del mismo proyecto pueden visualizar sus servicios 
 
 
 
-mysql.wordpress.svc.cluster.local
+
 
 
 
