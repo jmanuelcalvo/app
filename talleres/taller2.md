@@ -18,7 +18,7 @@ Los PVC pueden ser de 3 tipos:
 
 
 
-1. Cree un archivo llamado data01.yml
+1. Cree un archivo llamado data01.yml y defina el tipo de almacenamiento 
 ```
 [user01@bastion ~]$ cat << EOF > data01.yml
 apiVersion: v1
