@@ -170,6 +170,8 @@ password=pass1
 oc create secret generic mysecret --from-file myapp.sec
 oc set env dc/app1 --from secret/mysecret
 
+## Plantilla de Wordpress
+https://vocon-it.com/2018/11/05/installing-wordpress-via-openshift/
 
 # Comandos Docker
 ![Docker1](docker1.png)
