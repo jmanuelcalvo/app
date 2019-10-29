@@ -2,12 +2,23 @@
 
 Tenga en cuenta que para los ejercicios, debe cambiar el nombre del usuario user0X por el que le fue asignado
 
+. Set up two variables for the two clusters and save them in `.bashrc`:
++
+[source,sh]
+----
+export CLUSTER1=$(oc whoami --show-server | cut -f 2 -d ':' | cut -f 3 -d '/'  | sed 's/api.//')
+export CLUSTER2=cluster-${GUID2}.${GUID2}.sandbox${SANDBOX2}.opentlc.com
+echo "export CLUSTER1=$(oc whoami --show-server | cut -f 2 -d ':' | cut -f 3 -d '/'  | sed 's/api.//')" >>$HOME/.bashrc
+echo "export CLUSTER2=cluster-${GUID2}.${GUID2}.sandbox${SANDBOX2}.opentlc.com" >>$HOME/.bashrc
+----
+
+
 # Ejecute los siguientes comandos:
 1. Verifique con que usuario se encuentre logueado
----
+```
 [user01@bastion ~]$ oc whoami
 user01
----
+```
 2. En caso que no este logueado, loguese con su usuario (contraseña redhat01)
 ```
 [user01@bastion ~]$  oc login https://loadbalancer.1b84.example.opentlc.com -u user0X
@@ -73,7 +84,7 @@ app01-1-tdbdn   1/1       Running     0          3m
 NAME      TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE
 app01     ClusterIP   172.30.0.109   <none>        8080/TCP,8443/TCP   5m
 ```
-5. Ejecute los siguientes comandos de obtener informacion adicionar de los anteriores recursos
+6. Ejecute los siguientes comandos de obtener informacion adicionar de los anteriores recursos
 ```
 oc describe pod
 oc describe service
@@ -139,7 +150,7 @@ Events:
   Normal  Started    5m    kubelet, node3.1b84.internal  Started container
 ```
   
-6. Publique la aplicacion que acaba de crear
+7. Publique la aplicacion que acaba de crear
 - Valide si se encuentra la ruta (router creado)
 ```
 [user01@bastion ~]$ oc get route
@@ -166,7 +177,7 @@ app01     app01-project01.apps.1b84.example.opentlc.com             app01      8
 Esta es la version 1 de la app. Se ejecuta en el host -> app01-1-tdbdn (10.1.10.114)
 ```
 
-7. Escalar el numero de pods de una aplicacion
+8. Escalar el numero de pods de una aplicacion
 ```
 [user01@bastion ~]$ oc scale --replicas=3 dc app01
 deploymentconfig.apps.openshift.io/app01 scaled
@@ -180,7 +191,7 @@ Esta es la version 1 de la app. Se ejecuta en el host -> app01-1-tdbdn (10.1.10.
 Esta es la version 1 de la app. Se ejecuta en el host -> app01-1-b8gbm (10.1.14.149)
 ```
 
-8. Por ulitmo eliminar todo e intentar hacer lo mismo por la interfase Web
+9. Por ulitmo eliminar todo e intentar hacer lo mismo por la interfase Web
 ```
 [user01@bastion ~]$ oc delete all --all
 pod "app01-1-b8gbm" deleted
