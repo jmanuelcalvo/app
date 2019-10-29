@@ -13,6 +13,8 @@ Datos persistentes para las aplicaciones
 
 # A traves de Volumenes persistentes:
 Los PVC pueden ser de 3 tipos:
+
+| Tables   |      Are      |  Cool |
 | TIPO            | Abreviatura | Descripcion                                                |  
 |-----------------|:-----------:|-----------------------------------------------------------:|
 | ReadWriteOnce   | RWO         | The volume can be mounted as read-write by a single node.  |
