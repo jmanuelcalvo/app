@@ -89,6 +89,7 @@ wordpress-1-l9tnh   1/1       Running     0          25s
 ```
 
 6. Validar los servicios y exponer la ruta del wordpres
+```
 [user01@bastion ~]$ oc get svc
 NAME        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
 mysql       ClusterIP   172.30.84.196   <none>        3306/TCP            9m
@@ -96,8 +97,10 @@ wordpress   ClusterIP   172.30.200.65   <none>        8080/TCP,8443/TCP   3m
     
 [user01@bastion ~]$ oc expose svc wordpress
 route.route.openshift.io/wordpress exposed
+```
 
 7. Ingresar por el navegador a la ruta para configurar el Wordpres
+
 ![Wordpress1](wordpress1.png)
 
 
@@ -115,7 +118,7 @@ Formato
 
 Esto quiere decir que el Wordpress se encuentra configurado
 
-## NOTA: Animese a dejar todos los datos persistentes de acuerdo a los ejercicios anteriores
+# NOTA: Animese a dejar todos los datos persistentes de acuerdo a los ejercicios anteriores
 
 
 
