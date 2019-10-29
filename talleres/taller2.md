@@ -17,7 +17,7 @@ Los PVC pueden ser de 3 tipos:
 
 ![Modos](pvc.png)
 
-
+# Adicionar Volumenn a un pod existente
 
 1. Cree un archivo llamado data01.yml y defina el tipo de almacenamiento 
 ```
@@ -81,4 +81,43 @@ tmpfs                                           3.9G   16K  3.9G   1% /run/secre
 tmpfs                                           3.9G     0  3.9G   0% /proc/acpi
 tmpfs                                           3.9G     0  3.9G   0% /proc/scsi
 tmpfs                                           3.9G     0  3.9G   0% /sys/firmware
+```
+
+# Adicionar Volumenn a una aplicacion nueva
+
+1. Cree un archivo llamado data01.yml y defina el tipo de almacenamiento 
+```
+[user01@bastion ~]$ cat << EOF > data02.yml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data02
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+EOF
+
+```
+Verifique el archivo creado
+```
+[user01@bastion ~]$ cat data02.yml
+...
+...
+```
+2. Verifique los Persistent Volume Claim (PVC) creados previamente
+```
+[user01@bastion ~]$ oc get pvc
+NAME      STATUS    VOLUME    CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+```
+3. Cree el nuevo PVC y verifiquelo
+```
+[user01@bastion ~]$ oc create -f data02.yml
+persistentvolumeclaim/data02 created
+
+[user01@bastion ~]$ oc get pvc
+NAME      STATUS    VOLUME    CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+data02    Bound     pv7       5Gi        RWO                           2s
 ```
