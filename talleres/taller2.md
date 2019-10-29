@@ -394,4 +394,4 @@ spec:
 EOF
 ```
 
-
+5. Realizar las pruebas de conexion a la base de datos realizadas en las practicas pasadas
