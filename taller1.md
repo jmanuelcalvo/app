@@ -4,10 +4,10 @@ Tenga en cuenta que para los ejercicios, debe cambiar el nombre del usuario user
 
 # Ejecute los siguientes comandos:
 1. Verifique con que usuario se encuentre logueado
-```
+---
 [user01@bastion ~]$ oc whoami
 user01
-```
+---
 2. En caso que no este logueado, loguese con su usuario (contraseña redhat01)
 ```
 [user01@bastion ~]$  oc login https://loadbalancer.1b84.example.opentlc.com -u user0X
