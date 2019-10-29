@@ -17,7 +17,7 @@ Tenga en cuenta que para los ejercicios, debe cambiar el nombre del usuario user
 1. Verifique con que usuario se encuentre logueado
 ```
 [user01@bastion ~]$ oc whoami
-user01
+- user01
 ```
 2. En caso que no este logueado, loguese con su usuario (contraseña redhat01)
 ```
