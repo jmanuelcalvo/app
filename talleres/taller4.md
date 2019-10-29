@@ -83,14 +83,14 @@ MAINTAINER Jose Manuel Calvo <jcalvo@redhat.com>
 
 LABEL description="A basic Apache container on RHEL 7"
 
-RUN yum -y update && \
-    yum install -y httpd && \
-    yum clean all \
+RUN yum -y install -y httpd && \
+    yum clean all && \
     echo "Hello from the httpd container!" > /var/www/html/index.html
 
 EXPOSE 80
 
 CMD  ["httpd", "-D", "FOREGROUND"]
+EOF
 ```
 2. Compilar el contenido del docker file
 ```
