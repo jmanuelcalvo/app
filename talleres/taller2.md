@@ -327,10 +327,11 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: database-secret
-  type: Opaque
-  data:
-    ROOTPW: cGFzc3dvcmQK
-EOF
+type: Opaque 1
+data:
+  username: cGFzc3dvcmQK
+  password: cGFzc3dvcmQK
+EOF 
  ```
  
  3. Creacion del secret a partir del archivo yaml
@@ -380,7 +381,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: database-secret
-              key: ROOTPW
+              key: password
         ports:
         - containerPort: 3306
           name: mysql
