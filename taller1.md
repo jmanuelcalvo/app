@@ -1,12 +1,5 @@
 # Taller No 1.
 
-```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-```
-
 Tenga en cuenta que para los ejercicios, debe cambiar el nombre del usuario user0X por el que le fue asignado
 
 # Ejecute los siguientes comandos:
@@ -20,7 +13,7 @@ user01
 [user01@bastion ~]$  oc login https://loadbalancer.1b84.example.opentlc.com -u user0X
 ```
 3. Cree un nuevo proyecto
-```diff
+```
 [user01@bastion ~]$ oc new-project project01
 - Now using project "project01" on server "https://loadbalancer.1b84.internal:443".
 
