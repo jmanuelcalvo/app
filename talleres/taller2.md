@@ -8,18 +8,12 @@ Datos persistentes para las aplicaciones
 | Tables   |      Are      |  Cool |
 |----------|:-------------:|------:|
 | ReadWriteOnce |  RWO | The volume can be mounted as read-write by a single node. |
-| ReadOnlyMany |    ROX   |   $12 |
-| ReadWriteMany | RWX |    $1 |
+| ReadOnlyMany |    ROX   |   The volume can be mounted read-only by many nodes. |
+| ReadWriteMany | RWX |    The volume can be mounted as read-write by many nodes. |
 
 # A traves de Volumenes persistentes:
 Los PVC pueden ser de 3 tipos:
 
-| Tables   |      Are      |  Cool |
-| TIPO            | Abreviatura | Descripcion                                                |  
-|-----------------|:-----------:|-----------------------------------------------------------:|
-| ReadWriteOnce   | RWO         | The volume can be mounted as read-write by a single node.  |
-| ReadOnlyMany    | ROX         | The volume can be mounted read-only by many nodes.         |
-| ReadWriteMany   | RWX         | The volume can be mounted as read-write by many nodes.     |
 
 1. Cree un archivo llamado data01.yml
 ```
