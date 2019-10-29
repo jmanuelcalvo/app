@@ -1,5 +1,5 @@
 # Acceso Cluster OpenShift Workshop Claro
-# https://github.com/jmanuelcalvo/
+
 ## Por Navegador
 ```
 https://loadbalancer.1b84.example.opentlc.com/
@@ -63,7 +63,7 @@ oc delete project myapp
 # Creacion y eliminar de aplicaciones en OpenShift basadas en:
 ```
 oc new-app -S php
-oc new-app -S --template=ruby 		# Plantillas de OCP
+oc new-app -S --template=ruby 		  # Plantillas de OCP
 oc new-app -S --image-stream=mysql	# Imagenes cargadas previamente en el servidor de registro de OCP
 oc new-app -S --docker-image=python	# Imagenes de un servidor de registro de Docker
 ```
@@ -148,7 +148,6 @@ oc port-forward  mysql-1-t3qfb 13306:3306	| 	mysql -h127.0.0.1 -P13306 -uuser1 -
 ```
 
 
-[Taller 1](taller1.md)
 
 
 
@@ -168,5 +167,12 @@ password=pass1
 
 oc create secret generic mysecret --from-file myapp.sec
 oc set env dc/app1 --from secret/mysecret
+
+
+
+
+# Tallers
+[Taller 1](taller1.md)
+[Taller 2](taller2.md)
 
 
