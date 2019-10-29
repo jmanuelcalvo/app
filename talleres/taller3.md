@@ -113,6 +113,10 @@ Formato
 
 ![Wordpress4](wordpress4.png)
 
+Esto quiere decir que el Wordpress se encuentra configurado
+
+## NOTA: Animese a dejar todos los datos persistentes de acuerdo a los ejercicios anteriores
+
 
 
 
