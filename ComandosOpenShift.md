@@ -172,8 +172,8 @@ oc set env dc/app1 --from secret/mysecret
 
 
 # Tallers
-[Taller 1](taller1.md)
+[Taller 1](talleres/taller1.md)
 
-[Taller 2](taller2.md)
+[Taller 2](talleres/taller2.md)
 
 
