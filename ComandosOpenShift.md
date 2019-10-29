@@ -171,6 +171,10 @@ oc create secret generic mysecret --from-file myapp.sec
 oc set env dc/app1 --from secret/mysecret
 
 
+#Comandos Docker
+![Docker1](docker1.png)
+
+![Docker2](docker2.png)
 
 
 
