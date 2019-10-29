@@ -330,7 +330,7 @@ metadata:
   type: Opaque
   data:
     ROOTPW: cGFzc3dvcmQK
- EOF   
+EOF   
  ```
  
  3. Creacion del secret a partir del archivo yaml
