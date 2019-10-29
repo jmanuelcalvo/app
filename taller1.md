@@ -14,7 +14,7 @@ echo "export CLUSTER2=cluster-${GUID2}.${GUID2}.sandbox${SANDBOX2}.opentlc.com" 
 
 
 # Ejecute los siguientes comandos:
-1. Verifique con que usuario se encuentre logueado
+* 1. Verifique con que usuario se encuentre logueado
 ```
 [user01@bastion ~]$ oc whoami
 user01
