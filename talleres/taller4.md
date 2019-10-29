@@ -26,7 +26,7 @@ En la columna OFICIAL, OK indica una imagen creada y apoyada por la empresa detr
 
 4. Ejecutar un contenedor en modo interactivo e instalar software
 ```
-[user01@bastion ~]$ sudo docker run -it centos -i, --interactive, -t, --tty
+[user01@bastion ~]$ sudo docker run -it centos bash
 ```
 Dentro del contenedor se pueden instalar aplicaciones tal como si se estuviera dentro de un S.O
 ```
