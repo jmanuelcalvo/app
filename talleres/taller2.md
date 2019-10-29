@@ -330,21 +330,68 @@ metadata:
   type: Opaque
   data:
     ROOTPW: cGFzc3dvcmQK
-EOF   
+EOF
  ```
  
  3. Creacion del secret a partir del archivo yaml
  ```
 [user01@bastion ~]$ oc create -f secret.yaml
 secret/database-secret created
+```
 
+4. Elimine todos las aplicaciones y cree una nueva base de datos que obtenta el password de este secret, preste atencion a los parametros secretKeyRef del archivo mysql-secret.yml
+```
+[user01@bastion ~]$ oc delete all --all
+...
+...
 
+[user01@bastion ~]$ cat << EOF > mysql-secret.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: database-secret
+              key: ROOTPW
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: data02
+EOF
+```
 
-## Creacion de Secret
-vim myapp.sec
-username=user1
-password=pass1
-
-oc create secret generic mysecret --from-file myapp.sec
-oc set env dc/app1 --from secret/mysecret
 
