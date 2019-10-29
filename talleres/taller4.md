@@ -10,23 +10,23 @@ Inicio de trabajo con contenedores
 
 1. Buscar contenedores disponibles
 ```
-[root@jmanuelcalvo ~]# docker search centos
+[user01@bastion ~]$ sudo docker search centos
 ```
 En la columna OFICIAL, OK indica una imagen creada y apoyada por la empresa detrás del proyecto.
 
 2. Descargar el contenedor a su equipo local
 ```
-[root@jmanuelcalvo ~]# docker pull centos
+[user01@bastion ~]$ sudo docker pull centos
 ```
 
 3. Visualizar las imágenes descargadas
 ```
-[root@jmanuelcalvo ~]# docker images
+[user01@bastion ~]$ sudo docker images
 ```
 
 4. Ejecutar un contenedor en modo interactivo e instalar software
 ```
-[root@jmanuelcalvo ~]# docker run -it centos -i, --interactive, -t, --tty
+[user01@bastion ~]$ sudo docker run -it centos -i, --interactive, -t, --tty
 ```
 Dentro del contenedor se pueden instalar aplicaciones tal como si se estuviera dentro de un S.O
 ```
@@ -43,32 +43,32 @@ Importante: Observe el container ID en el prompt del sistema. En el ejemplo ante
 
 6. Ejecutar un servicio en Docker
 ```
-[root@jmanuelcalvo ~]# docker run -i -p 80:80 -t carpeta/centos-httpd /bin/bash
+[user01@bastion ~]$ sudo docker run -i -p 80:80 -t carpeta/centos-httpd /bin/bash
 [root@1c827c63f2c5 /]# /usr/sbin/httpd 
 ```
 IMPORTANTE: si quiere que el servicio de apache se ejecute automaticamente al lanzar el contenedor, se debe crear un script de inicializacion de servicio para usarlo al momento de llamar el contenedor (ejemplo iniciarservicios.sh) donde el script contenga la sentencia de comandos de inicio en formato shell
 ```
-[root@jmanuelcalvo ~]# docker run -i -p 80:80 -t carpeta/centos-httpd /root/iniciarservicios.sh
+[user01@bastion ~]$ sudo docker run -i -p 80:80 -t carpeta/centos-httpd /root/iniciarservicios.sh
 ```
 
 7. Salvar y restaurar una imagen de contenedor en caso que desee guardarla o llevarla a otra maquina que soporte contenedores 
 Exportar
 ```
-[root@jmanuelcalvo ~]# docker save carpeta/centos-httpd -o centos-http.tgz 
+[user01@bastion ~]$ sudo docker save carpeta/centos-httpd -o centos-http.tgz 
 ```
 Importar
 ```
-[root@otroserver ~]# docker load --input centos-http.tgz
+[user01@bastion ~]$ sudo docker load --input centos-http.tgz
 ```
 
 Listar los contenedores que se ejecutaron para concer su ID o los que se encuentran en ejecucion
 ```
-[root@jmanuelcalvo ~]# docker ps
-[root@jmanuelcalvo ~]# docker ps -a 
+[user01@bastion ~]$ sudo docker ps
+[user01@bastion ~]$ sudo docker ps -a 
 ```
 8. Borrar las imágenes descargadas 
 ```
-[root@jmanuelcalvo ~]# docker rmi 02acb16f957d
+[user01@bastion ~]$ sudo docker rmi 02acb16f957d
 ```
 
 ## Crear contenedores a partir de archivo Dockerfile
