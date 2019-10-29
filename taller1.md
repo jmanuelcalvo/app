@@ -15,7 +15,7 @@ Tenga en cuenta que para los ejercicios, debe cambiar el nombre del usuario user
 
 # Ejecute los siguientes comandos:
 1. Verifique con que usuario se encuentre logueado
-```
+```diff
 [user01@bastion ~]$ oc whoami
 - user01
 ```
