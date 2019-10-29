@@ -187,27 +187,27 @@ deployment.apps/mysql created
 6. Verifique que la aplicacion esta corriendo y que tiene el volumen persistente
 ```diff
 [user01@bastion ~]$ oc get pod
-NAME                     READY     STATUS      RESTARTS   AGE
-app2-1-build             0/1       Completed   0          5h
-app2-7-pm5vk             1/1       Running     0          25m
+  NAME                     READY     STATUS      RESTARTS   AGE
+  app2-1-build             0/1       Completed   0          5h
+  app2-7-pm5vk             1/1       Running     0          25m
 - mysql-685958c648-zftrv   1/1       Running     0          48s
 
 [user01@bastion ~]$ oc rsh mysql-685958c648-zftrv
 $ df -h
-Filesystem                                     Size  Used Avail Use% Mounted on
-overlay                                         50G  7.9G   43G  16% /
-tmpfs                                          3.9G     0  3.9G   0% /dev
-tmpfs                                          3.9G     0  3.9G   0% /sys/fs/cgroup
-/dev/xvda2                                      50G  7.9G   43G  16% /etc/hosts
-shm                                             64M     0   64M   0% /dev/shm
+  Filesystem                                     Size  Used Avail Use% Mounted on
+  overlay                                         50G  7.9G   43G  16% /
+  tmpfs                                          3.9G     0  3.9G   0% /dev
+  tmpfs                                          3.9G     0  3.9G   0% /sys/fs/cgroup
+  /dev/xvda2                                      50G  7.9G   43G  16% /etc/hosts
+  shm                                             64M     0   64M   0% /dev/shm
 - support1.1b84.internal:/srv/nfs/user-vols/pv9  197G  4.6G  183G   3% /var/lib/mysql
-tmpfs                                          3.9G   16K  3.9G   1% /run/secrets/kubernetes.io/serviceaccount
-tmpfs                                          3.9G     0  3.9G   0% /proc/acpi
-tmpfs                                          3.9G     0  3.9G   0% /proc/scsi
-tmpfs                                          3.9G     0  3.9G   0% /sys/firmware
+  tmpfs                                          3.9G   16K  3.9G   1% /run/secrets/kubernetes.io/serviceaccount
+  tmpfs                                          3.9G     0  3.9G   0% /proc/acpi
+  tmpfs                                          3.9G     0  3.9G   0% /proc/scsi
+  tmpfs                                          3.9G     0  3.9G   0% /sys/firmware
 ```
 7. Cree una Base de datos
-```
+```diff
 $ mysql -u root -ppassword
 Warning: Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
