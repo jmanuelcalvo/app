@@ -148,7 +148,9 @@ oc port-forward  mysql-1-t3qfb 13306:3306	| 	mysql -h127.0.0.1 -P13306 -uuser1 -
 ```
 
 
-
+# Miselaneos
+Comandos con ansible desde bastion
+Comandos de git
 
 
 # Almacenamiento
@@ -167,6 +169,9 @@ password=pass1
 
 oc create secret generic mysecret --from-file myapp.sec
 oc set env dc/app1 --from secret/mysecret
+
+
+
 
 
 
