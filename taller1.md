@@ -20,7 +20,7 @@ user01
 [user01@bastion ~]$  oc login https://loadbalancer.1b84.example.opentlc.com -u user0X
 ```
 3. Cree un nuevo proyecto
-```
+```diff
 [user01@bastion ~]$ oc new-project project01
 - Now using project "project01" on server "https://loadbalancer.1b84.internal:443".
 
