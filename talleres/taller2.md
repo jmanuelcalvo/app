@@ -7,9 +7,9 @@ Datos persistentes para las aplicaciones
 
 | Tables   |      Are      |  Cool |
 |----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+| ReadWriteOnce |  left-aligned | $1600 |
+| ReadOnlyMany |    centered   |   $12 |
+| ReadWriteMany | right-aligned |    $1 |
 
 # A traves de Volumenes persistentes:
 Los PVC pueden ser de 3 tipos:
