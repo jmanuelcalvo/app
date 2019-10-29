@@ -1,8 +1,4 @@
 # Taller No 1.
-- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `#f03c15`
-- ![#c5f015](https://placehold.it/15/c5f015/000000?text=+) `#c5f015`
-- ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) `#1589F0`
-
 
 ```diff
 - text in red
@@ -15,7 +11,7 @@ Tenga en cuenta que para los ejercicios, debe cambiar el nombre del usuario user
 
 # Ejecute los siguientes comandos:
 1. Verifique con que usuario se encuentre logueado
-```diff
+```
 [user01@bastion ~]$ oc whoami
 user01
 ```
@@ -26,7 +22,7 @@ user01
 3. Cree un nuevo proyecto
 ```
 [user01@bastion ~]$ oc new-project project01
-Now using project "project01" on server "https://loadbalancer.1b84.internal:443".
+- Now using project "project01" on server "https://loadbalancer.1b84.internal:443".
 
 You can add applications to this project with the 'new-app' command. For example, try:
 
