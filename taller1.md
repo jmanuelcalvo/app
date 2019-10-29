@@ -1,20 +1,20 @@
 # Taller No 1.
+- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `#f03c15`
+- ![#c5f015](https://placehold.it/15/c5f015/000000?text=+) `#c5f015`
+- ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) `#1589F0`
+
+
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+```
 
 Tenga en cuenta que para los ejercicios, debe cambiar el nombre del usuario user0X por el que le fue asignado
 
-. Set up two variables for the two clusters and save them in `.bashrc`:
-+
-[source,sh]
-----
-export CLUSTER1=$(oc whoami --show-server | cut -f 2 -d ':' | cut -f 3 -d '/'  | sed 's/api.//')
-export CLUSTER2=cluster-${GUID2}.${GUID2}.sandbox${SANDBOX2}.opentlc.com
-echo "export CLUSTER1=$(oc whoami --show-server | cut -f 2 -d ':' | cut -f 3 -d '/'  | sed 's/api.//')" >>$HOME/.bashrc
-echo "export CLUSTER2=cluster-${GUID2}.${GUID2}.sandbox${SANDBOX2}.opentlc.com" >>$HOME/.bashrc
-----
-
-
 # Ejecute los siguientes comandos:
-* 1. Verifique con que usuario se encuentre logueado
+1. Verifique con que usuario se encuentre logueado
 ```
 [user01@bastion ~]$ oc whoami
 user01
