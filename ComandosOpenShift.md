@@ -181,4 +181,6 @@ oc set env dc/app1 --from secret/mysecret
 
 [Taller 2](talleres/taller2.md)
 
+[Taller 3](talleres/taller3.md)
+
 
