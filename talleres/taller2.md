@@ -57,7 +57,9 @@ data01    Bound     pv7       5Gi        RWO                           2s
 ```
 
 4. Montar el nuevo PVC sobre un contenedor existente
+Asegurese que tenga aplicaciones previamente creadas, en caso de que no, cree una
 ```
+[user01@bastion ~]$ oc new-app php~https://github.com/jmanuelcalvo/app.git --name=app2
 [user01@bastion ~]$ oc set volume dc/app2 --add --type=persistentVolumeClaim --claim-name=data01 --mount-path=/data2
 ```
 
