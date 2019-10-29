@@ -279,3 +279,45 @@ mysql> show databases;
 
 
 
+# A traves de ConfigMap:
+Los configMaps son variables que se le inyectan a los contenedores de la siguiente forma:
+
+
+
+1. Creacion del recurso configMap
+```
+[user01@bastion ~]$ oc create cm myconf --from-literal APP_MSG="Mensaje" --from-literal APP_HEADER="Titulo"
+configmap/myconf created
+[user01@bastion ~]$ oc set env dc/app2 --from configmap/myconf
+deploymentconfig.apps.openshift.io/app2 updated
+```
+2. En caso que sea el primer configMap inyectado, OpenShift generara una nueva version, de lo contrario, si es una modificacion de un CM creado, se debe forzar a que se cree una nueva version la aplicacion basado en el deploymentconfig
+```
+[user01@bastion ~]$ oc rollout latest app2
+deploymentconfig.apps.openshift.io/app2 rolled out
+```
+
+3. Validar el funcionamiento desde el web o con el comando cURL:
+```diff
+[user01@bastion ~]$ oc get route
+NAME      HOST/PORT                                             PATH      SERVICES   PORT       TERMINATION   WILDCARD
+- app2      app2-jmanuel-project2.apps.1b84.example.opentlc.com             app2       8080-tcp                 None
+
+- [user01@bastion ~]$ curl  app2-jmanuel-project2.apps.1b84.example.opentlc.com/var.php
+<h4>Bienvenidos a: Titulo
+</h4><br><p>El valor del CM/APP_MSG es: Mensaje
+</p>
+```
+
+
+
+
+
+## Creacion de Secret
+vim myapp.sec
+username=user1
+password=pass1
+
+oc create secret generic mysecret --from-file myapp.sec
+oc set env dc/app1 --from secret/mysecret
+
