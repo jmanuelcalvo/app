@@ -111,6 +111,7 @@ Verifique el archivo creado
 ```
 [user01@bastion ~]$ oc get pvc
 NAME      STATUS    VOLUME    CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+data01    Bound     pv7       5Gi        RWO                           24m
 ```
 3. Cree el nuevo PVC y verifiquelo
 ```
@@ -119,5 +120,130 @@ persistentvolumeclaim/data02 created
 
 [user01@bastion ~]$ oc get pvc
 NAME      STATUS    VOLUME    CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-data02    Bound     pv7       5Gi        RWO                           2s
+data01    Bound     pv7       5Gi        RWO                           25m
+data02    Bound     pv9       5Gi        RWO                           6s
 ```
+
+4. Cree un archivo en formato yaml con las siguientes definiciones y presete especial atencion a los parametros que inician por volume
+```
+[user01@bastion ~]$ cat << EOF > mysql.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: data02
+EOF
+```
+Verfique el archivo creado
+```
+[user01@bastion ~]$ cat mysql.yml
+...
+...
+```
+5. Cree la aplicacion y el servicio a partir del nuevo archivo
+```
+[user01@bastion ~]$ oc create -f  mysql.yml
+service/mysql created
+deployment.apps/mysql created
+```
+6. Verifique que la aplicacion esta corriendo y que tiene el volumen persistente
+```diff
+[user01@bastion ~]$ oc get pod
+NAME                     READY     STATUS      RESTARTS   AGE
+app2-1-build             0/1       Completed   0          5h
+app2-7-pm5vk             1/1       Running     0          25m
+- mysql-685958c648-zftrv   1/1       Running     0          48s
+
+[user01@bastion ~]$ oc rsh mysql-685958c648-zftrv
+$ df -h
+Filesystem                                     Size  Used Avail Use% Mounted on
+overlay                                         50G  7.9G   43G  16% /
+tmpfs                                          3.9G     0  3.9G   0% /dev
+tmpfs                                          3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/xvda2                                      50G  7.9G   43G  16% /etc/hosts
+shm                                             64M     0   64M   0% /dev/shm
+- support1.1b84.internal:/srv/nfs/user-vols/pv9  197G  4.6G  183G   3% /var/lib/mysql
+tmpfs                                          3.9G   16K  3.9G   1% /run/secrets/kubernetes.io/serviceaccount
+tmpfs                                          3.9G     0  3.9G   0% /proc/acpi
+tmpfs                                          3.9G     0  3.9G   0% /proc/scsi
+tmpfs                                          3.9G     0  3.9G   0% /sys/firmware
+```
+7. Cree una Base de datos
+```
+$ mysql -u root -ppassword
+Warning: Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 3
+Server version: 5.6.46 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+
++ mysql> create database sample;
+Query OK, 1 row affected (0.00 sec)
+
++ mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sample             |
++--------------------+
+4 rows in set (0.01 sec)
+
++ mysql> exit
+Bye
+$ exit
+
+
+```
+
+
+
+mysql.yml
