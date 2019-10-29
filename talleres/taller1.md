@@ -1,4 +1,4 @@
-# Tallers
+# Talleres
 [Inicio](../ComandosOpenShift.md)
 
 
