@@ -54,3 +54,30 @@ persistentvolumeclaim/data01 created
 NAME      STATUS    VOLUME    CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 data01    Bound     pv7       5Gi        RWO                           2s
 ```
+
+4. Montar el nuevo PVC sobre un contenedor existente
+```
+[user01@bastion ~]$ oc set volume dc/app2 --add --type=persistentVolumeClaim --claim-name=data01 --mount-path=/data2
+```
+
+5. Verificar que el nuevo pod tenga la carpeta montada
+```diff
+[user01@bastion ~]$ oc get pod
+NAME           READY     STATUS      RESTARTS   AGE
+app2-1-build   0/1       Completed   0          4h
+app2-7-pm5vk   1/1       Running     0          2m
+
+[user01@bastion ~]$ oc rsh  app2-7-pm5vk
+sh-4.2$ df -h
+Filesystem                                      Size  Used Avail Use% Mounted on
+overlay                                          50G  7.5G   43G  15% /
+tmpfs                                           3.9G     0  3.9G   0% /dev
+tmpfs                                           3.9G     0  3.9G   0% /sys/fs/cgroup
+- support1.1b84.internal:/srv/nfs/user-vols/pv7   197G  4.6G  183G   3% /data2
+/dev/xvda2                                       50G  7.5G   43G  15% /etc/hosts
+shm                                              64M     0   64M   0% /dev/shm
+tmpfs                                           3.9G   16K  3.9G   1% /run/secrets/kubernetes.io/serviceaccount
+tmpfs                                           3.9G     0  3.9G   0% /proc/acpi
+tmpfs                                           3.9G     0  3.9G   0% /proc/scsi
+tmpfs                                           3.9G     0  3.9G   0% /sys/firmware
+```
