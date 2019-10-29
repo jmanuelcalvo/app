@@ -300,16 +300,43 @@ deploymentconfig.apps.openshift.io/app2 rolled out
 3. Validar el funcionamiento desde el web o con el comando cURL:
 ```diff
 [user01@bastion ~]$ oc get route
-NAME      HOST/PORT                                             PATH      SERVICES   PORT       TERMINATION   WILDCARD
+  NAME      HOST/PORT                                             PATH      SERVICES   PORT       TERMINATION   WILDCARD
 - app2      app2-jmanuel-project2.apps.1b84.example.opentlc.com             app2       8080-tcp                 None
+```
+NOTA: Recuerde poner el archivo var.php que es el codigo que lee las variables del sistema operativo
 
+```diff
 - [user01@bastion ~]$ curl  app2-jmanuel-project2.apps.1b84.example.opentlc.com/var.php
-<h4>Bienvenidos a: Titulo
-</h4><br><p>El valor del CM/APP_MSG es: Mensaje
-</p>
+  <h4>Bienvenidos a: Titulo
+  </h4><br><p>El valor del CM/APP_MSG es: Mensaje
+  </p>
 ```
 
 
+# A traves de Secret:
+1. Creacion de una contraseña en formato base64
+```
+[user01@bastion ~]$ echo "password" |base64
+cGFzc3dvcmQK
+```
+
+2. Creacion de un archivo que contenga los datos de secret, entre ellos la clave que acabamos de poner
+```
+[user01@bastion ~]$ cat << EOF > secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: database-secret
+  type: Opaque
+  data:
+    ROOTPW: cGFzc3dvcmQK
+ EOF   
+ ```
+ 
+ 3. Creacion del secret a partir del archivo yaml
+ ```
+[user01@bastion ~]$ oc create -f secret.yaml
+secret/database-secret created
 
 
 
