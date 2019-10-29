@@ -15,6 +15,7 @@ Los PVC pueden ser de 3 tipos:
 | ReadOnlyMany |    ROX   |   The volume can be mounted read-only by many nodes. |
 | ReadWriteMany | RWX |    The volume can be mounted as read-write by many nodes. |
 
+![Modos](pvc.png)
 
 
 
