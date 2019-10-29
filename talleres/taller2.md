@@ -5,14 +5,17 @@
 # Taller No 2.
 Datos persistentes para las aplicaciones
 
-| Tables   |      Are      |  Cool |
+# A traves de Volumenes persistentes:
+Los PVC pueden ser de 3 tipos:
+
+
+| MODO   |      ABREVIATURA      |  DESCRIPCION |
 |----------|:-------------:|------:|
 | ReadWriteOnce |  RWO | The volume can be mounted as read-write by a single node. |
 | ReadOnlyMany |    ROX   |   The volume can be mounted read-only by many nodes. |
 | ReadWriteMany | RWX |    The volume can be mounted as read-write by many nodes. |
 
-# A traves de Volumenes persistentes:
-Los PVC pueden ser de 3 tipos:
+
 
 
 1. Cree un archivo llamado data01.yml
