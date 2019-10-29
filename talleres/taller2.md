@@ -7,9 +7,9 @@ Datos persistentes para las aplicaciones
 
 | Tables   |      Are      |  Cool |
 |----------|:-------------:|------:|
-| ReadWriteOnce |  left-aligned | $1600 |
-| ReadOnlyMany |    centered   |   $12 |
-| ReadWriteMany | right-aligned |    $1 |
+| ReadWriteOnce |  RWO | The volume can be mounted as read-write by a single node. |
+| ReadOnlyMany |    ROX   |   $12 |
+| ReadWriteMany | RWX |    $1 |
 
 # A traves de Volumenes persistentes:
 Los PVC pueden ser de 3 tipos:
