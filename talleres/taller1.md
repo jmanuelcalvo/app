@@ -1,5 +1,5 @@
 # Tallers
-[Inicio](ComandosOpenShift.md)
+[Inicio](../ComandosOpenShift.md)
 
 
 # Taller No 1.
