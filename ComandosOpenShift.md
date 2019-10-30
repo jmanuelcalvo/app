@@ -202,4 +202,8 @@ Para restaurar un proyecto, debe volver a crear todo el proyecto y todos los obj
 
 [Taller 4](talleres/taller4.md)
 
+[Taller 5](talleres/taller5.md)
+
+[Taller 6](talleres/taller6.md)
+
 
