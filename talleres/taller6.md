@@ -30,7 +30,14 @@ EOF
 
 ## Extructura comando ansible
 
+| Encabezado 1 | Encabezado 2 | Encabezado 3 |
+| --------- | --------- | --------- |
+| renglón 1, columna 1 | renglón 1, columna 2 | renglón 1, columna 3|
+
+
+
 | commando  |  grupo de servidores | -i archivo hosts | accion |
+| --------- | --------- | --------- | --------- |
 
 [user01@bastion ~]$ ansible all -i hosts  --list-hosts
   hosts (10):
