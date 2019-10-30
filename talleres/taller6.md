@@ -144,6 +144,19 @@ master2.1b84.internal      : ok=2    changed=1    unreachable=0    failed=0
 master3.1b84.internal      : ok=2    changed=1    unreachable=0    failed=0
 ```
 
-Ansible es idempotente, lo que quiere decir que si ya se ejecuto la tarea, no se repite
+El playbook se puede usar varias veces, Ansible es idempotente, lo que quiere decir que si ya se ejecuto la tarea, no se repite
 
+Validar el archivo creado
+
+```
+[user01@bastion ~]$ ansible masters -i hosts -m shell -a "cat /tmp/jmanuel.conf"
+master3.1b84.internal | SUCCESS | rc=0 >>
+# This file was moved to /etc/other.conf
+
+master2.1b84.internal | SUCCESS | rc=0 >>
+# This file was moved to /etc/other.conf
+
+master1.1b84.internal | SUCCESS | rc=0 >>
+# This file was moved to /etc/other.conf
+```
 
