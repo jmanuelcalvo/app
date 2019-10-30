@@ -3,7 +3,7 @@
 
 # Trabajando con Ansible
 
-Creacion de archivos de inventario
+Creacion de archivos de inventario agrupando servidores en masters, infra, apps, nfs
 
 ```
 [user01@bastion ~]$ cat << EOF > hosts
@@ -24,3 +24,4 @@ support1.1b84.internal
 loadbalancer.1b84.internal
 EOF
 ```
+
