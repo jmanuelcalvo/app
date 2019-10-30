@@ -64,9 +64,10 @@ Una vez indentificados los servidores, podemos trabajar con los diferentes modul
 | ansible  |  masters | -i hosts | -m shell | -a hostname |
 | ansible  |  masters | -i hosts | -m shell | -a ls /tmp |
 | ansible  |  infra | -i hosts | -m shell | -a "ip addr show eth0 |
-| ansible  |  all | -i hosts | -m file | -a 'path=/var/tmp/ansible_test.txt state=touch'|
-| ansible  |  all | -i hosts | -m file | -a 'path=/var/tmp/ansible_test.txt state=absent'|
-| ansible  |  apps | -i hosts | -m copy | -a 'src=/etc/hosts dest=/etc/hosts.jmanuel'|
+| ansible  |  all | -i hosts | -m file | -a 'path=/tmp/ansible_jmanuel.txt state=touch'|
+| ansible  |  all | -i hosts | -m file | -a 'path=/tmp/ansible_jmanuel.txt state=absent'|
+| ansible  |  apps | -i hosts | -m copy | -a 'src=/etc/hosts dest=/tmp/hosts.jmanuel'|
+| ansible  |  masters | -i hosts | -m copy | -a 'content: '# Hola Mundo' dest=/tmp/hosts.jmanuel'|
 
 
 
@@ -82,6 +83,10 @@ Visualizar un manual especifico
 ```
 [user01@bastion ~]$ ansible-doc copy
 ```
+
+## Creacion de playbooks
+
+
 
 
 
