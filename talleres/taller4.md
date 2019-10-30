@@ -1,6 +1,11 @@
 # Talleres
 [Inicio](../ComandosOpenShift.md)
 
+# Comandos Docker
+![Docker1](docker1.png)
+
+![Docker2](docker2.png)
+
 
 # Taller No 4.
 Inicio de trabajo con contenedores
