@@ -30,9 +30,9 @@ EOF
 
 ## Extructura comando ansible
 
-| Encabezado 1 | Encabezado 2 | Encabezado 3 |
-| --------- | --------- | --------- |
-| renglón 1, columna 1 | renglón 1, columna 2 | renglón 1, columna 3|
+| Encabezado 1 | Encabezado 2 | Encabezado 3 | Encabezado 4 | Encabezado 5 |
+| --------- | --------- | --------- | --------- | --------- |
+| renglón 1, columna 1 | renglón 1, columna 2 | renglón 1, columna 3| renglón 1, columna 4| renglón 1, columna 5|
 
 
 
