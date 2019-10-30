@@ -57,12 +57,6 @@ EOF
 ## Comandos Ad-hoc usando Modulos
 Una vez indentificados los servidores, podemos trabajar con los diferentes modulos de la siguiente forma
 
-| commando  |  grupo de servidores | -i archivo hosts | modulos | | argumentos |
-| --------- | --------- | --------- | --------- | --------- |
-| ansible  |  masters | -i hosts | -m ping | |
-| ansible  |  masters | -i hosts | -m shell | -a hostname |
-| ansible  |  masters | -i hosts | -m shell | -a ls /tmp |
-
 
 | commando | grupo de servidores | -i archivo hosts | modulos | argumentos |
 | --------- | --------- | --------- | --------- | --------- |
