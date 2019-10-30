@@ -112,7 +112,9 @@ Formato
 
 ![Wordpress2](wordpress2.png)
 
+
 ![Wordpress3](wordpress3.png)
+
 
 ![Wordpress4](wordpress4.png)
 
@@ -121,8 +123,20 @@ Esto quiere decir que el Wordpress se encuentra configurado
 # NOTA: Animese a dejar todos los datos persistentes de acuerdo a los ejercicios anteriores
 
 
+Los pasos anteriores muestran como implementar una aplicacion de forma manual, con el fin de conocer al detalle los recursos necesarios para el despliegue de varias aplicaciones tales como:
 
+Route
+Imagen PHP - Source Git con codigo WP
+PVC para almacenar archivos de configuracion (wp-config.php)
+Service para exponer la ruta
 
+Imagen MySQL - Variables de configuracion
+PVC para almacenar base de datos
+Secrets para almacenar las contraseñas de MySQL
+Service para conectar el aplicativo web internamente (mysql.project.svc.cluster.local)
+
+## Plantilla de Wordpress
+https://vocon-it.com/2018/11/05/installing-wordpress-via-openshift/
 
 
 
