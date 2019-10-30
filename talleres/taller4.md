@@ -31,30 +31,37 @@ En la columna OFICIAL, OK indica una imagen creada y apoyada por la empresa detr
 Dentro del contenedor se pueden instalar aplicaciones tal como si se estuviera dentro de un S.O
 ```
 [root@59839a1b7de2 /]# yum -y install httpd
-[root@59839a1b7de2 /]# vim /var/www/html/index.html
+[root@59839a1b7de2 /]# cat << EOF > /var/www/html/index.html
 <h1>Apache en un contenedor</h1>
+EOF
+[root@59839a1b7de2 /]# cat << EOF > /root/iniciarservicios.sh
+#! /bin/bash
+/usr/sbin/httpd -D FOREGROUND
+EOF
+[root@59839a1b7de2 /]# chmod 755 /root/iniciarservicios.sh
 ```
 Importante: Observe el container ID en el prompt del sistema. En el ejemplo anterior, es 59839a1b7de2.
 
 5. Una vez listo el contenedor con el software instalado y personalizado es necesario salvar los cambios
 ```
-[root@jmanuelcalvo ~]# docker commit -m "instalacion de apache" -a "Autor Jose Manuel" 59839a1b7de2 carpeta/centos-httpd
+[root@jmanuelcalvo ~]# sudo docker commit -m "Instalacion de apache" -a "Autor Jose Manuel" 59839a1b7de2 jmanuelcalvo/centos-httpd
 ```
 
 6. Ejecutar un servicio en Docker
 ```
-[user01@bastion ~]$ sudo docker run -i -p 80:80 -t carpeta/centos-httpd /bin/bash
-[root@1c827c63f2c5 /]# /usr/sbin/httpd 
-```
-IMPORTANTE: si quiere que el servicio de apache se ejecute automaticamente al lanzar el contenedor, se debe crear un script de inicializacion de servicio para usarlo al momento de llamar el contenedor (ejemplo iniciarservicios.sh) donde el script contenga la sentencia de comandos de inicio en formato shell
-```
-[user01@bastion ~]$ sudo docker run -i -p 80:80 -t carpeta/centos-httpd /root/iniciarservicios.sh
+[user01@bastion ~]$ sudo docker run -d -p 8001:80 --name=contenedor01-jmanuel jmanuelcalvo/centos-httpd /root/iniciarservicios.sh
+[user01@bastion ~]$ sudo docker ps
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                  NAMES
+1d437b546c11        jmanuelcalvo/centos-httpd   "/root/iniciarservic…"   17 seconds ago      Up 17 seconds       0.0.0.0:8001->80/tcp   contenedor01-jmanuel
+[user01@bastion ~]$ curl http://localhost:8001
+<h1>Apache en un contenedor</h1>
+[user01@bastion ~]$ sudo docker stop contenedor01-jmanuel
 ```
 
 7. Salvar y restaurar una imagen de contenedor en caso que desee guardarla o llevarla a otra maquina que soporte contenedores 
 Exportar
 ```
-[user01@bastion ~]$ sudo docker save carpeta/centos-httpd -o centos-http.tgz 
+[user01@bastion ~]$ sudo docker save jmanuelcalvo/centos-httpd -o centos-http.tgz 
 ```
 Importar
 ```
