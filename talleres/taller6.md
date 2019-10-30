@@ -66,6 +66,8 @@ Una vez indentificados los servidores, podemos trabajar con los diferentes modul
 | ansible  |  masters | -i hosts | -m ping | |
 | ansible  |  masters | -i hosts | -m shell | -a hostname |
 | ansible  |  masters | -i hosts | -m shell | -a ls /tmp |
+
+
 | ansible  |  infra | -i hosts | -m shell | -a "ip addr show eth0 |
 | ansible  |  all | -i hosts | -m file | -a 'path=/var/tmp/ansible_test.txt state=touch'|
 | ansible  |  all | -i hosts | -m file | -a 'path=/var/tmp/ansible_test.txt state=absent'|
