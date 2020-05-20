@@ -1,0 +1,8 @@
+---
+- name: Borrar archivos Rollback
+  hosts: all
+  gather_facts: no
+  tasks:
+
+  - name: Borrando archivos con plantilla
+    shell: rm -rf /tmp/*.xml
