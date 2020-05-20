@@ -7,4 +7,4 @@
   - name: Crear archivo con plantilla
     template:
       src: ejemplo.xml.j2
-      dest: /tmp/archivo.xml
+      dest: /tmp/{{archivo}}.xml
