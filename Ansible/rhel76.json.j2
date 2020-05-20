@@ -1,0 +1,173 @@
+{
+    "type": "com.vmware.vcac.catalog.domain.request.CatalogItemProvisioningRequest",
+    "catalogItemId": "2dd7351f-144a-41ca-9bc7-ff8d1e8a85fb",
+    "requestedFor": "julian.betancur@vsphere.local",
+    "businessGroupId": "1ac0871a-2594-4d03-bf55-e78407295375",
+    "description": null,
+    "reasons": null,
+    "data": {
+        "NimbusLinux_1": {
+            "componentTypeId": "com.vmware.csp.component.cafe.composition",
+            "componentId": null,
+            "classId": "Blueprint.Component.Declaration",
+            "typeFilter": "RHEL76_USM_SMALL*NimbusLinux_1",
+            "data": {
+                "_hasChildren": false
+            }
+        },
+        "RedHat7.6": {
+            "componentTypeId": "com.vmware.csp.component.cafe.composition",
+            "componentId": null,
+            "classId": "Blueprint.Component.Declaration",
+            "typeFilter": "RHEL76_USM_SMALL*RedHat7.6",
+            "data": {
+                "Hostname": "",
+                "VirtualMachine.Admin.UseGuestAgent": "true",
+                "VirtualMachine.Customize.WaitComplete": "true",
+                "VirtualMachine.Network0.DnsSuffix": "ambientesbc.lab",
+                "VirtualMachine.Network0.Name": "",
+                "VirtualMachine.Network0.PrimaryDns": "10.8.69.20",
+                "VirtualMachine.Network0.ProfileName": "",
+                "Vrm.DataCenter.Location": "SBMDEBVSA01",
+                "_cluster": 1,
+                "_hasChildren": true,
+                "bancolombia.DNS": "Si",
+                "bancolombia.ambiente": "{{ ambiente }}",
+                "bancolombia.cajon": "{{ cajon }}",
+                "bancolombia.centroCoste": "cost_cntr:400960",
+                "bancolombia.clase": "1002923",
+                "bancolombia.cmdb": "Si",
+                "bancolombia.compania": "ca_cmpny:6B7E13C1E586BE4A82BB7DA0A17F945A",
+                "bancolombia.contacto": "cnt:643A07044417124F945F05B11B54B09B",
+                "bancolombia.estadoServicio": "rss:400001",
+                "bancolombia.facturable": "Si",
+                "bancolombia.monitoreo": "Si",
+                "bancolombia.oc": "",
+                "bancolombia.organizacionMantenimiento": "org:C60C55E19ABB114EA7598FDD39661485",
+                "bancolombia.organizacionResponsable": "org:912EEA02867DC2479B6F53AD8BC4CD33",
+                "bancolombia.rol": "{{ rolservidor}}",
+                "bancolombia.sistemaOperativo": "Red Hat Enterprise Linux",
+                "bancolombia.solicitanteOC": "",
+                "bancolombia.tipoProcesador": "Intel",
+                "bancolombia.ubicacion": "A6C11B132BA6E84CB94F0D466DF80184",
+                "bancolombia.velocidadProcesador": "2 GHz",
+                "bancolombia.versionso": "7.6",
+                "cpu": 2,
+                "datacenter_location": null,
+                "description": null,
+                "disks": [
+                    {
+                        "componentTypeId": "com.vmware.csp.iaas.blueprint.service",
+                        "componentId": null,
+                        "classId": "Infrastructure.Compute.Machine.MachineDisk",
+                        "typeFilter": null,
+                        "data": {
+                            "capacity": 90,
+                            "custom_properties": null,
+                            "id": 1569333013609,
+                            "initial_location": "",
+                            "is_clone": true,
+                            "label": "Hard disk 1",
+                            "storage_reservation_policy": "",
+                            "userCreated": false,
+                            "volumeId": 0
+                        }
+                    },
+                    {
+                        "componentTypeId": "com.vmware.csp.iaas.blueprint.service",
+                        "componentId": null,
+                        "classId": "Infrastructure.Compute.Machine.MachineDisk",
+                        "typeFilter": null,
+                        "data": {
+                            "capacity": 1,
+                            "custom_properties": null,
+                            "id": 1569333013612,
+                            "initial_location": "",
+                            "is_clone": true,
+                            "label": "Hard disk 2",
+                            "storage_reservation_policy": "",
+                            "userCreated": false,
+                            "volumeId": 1
+                        }
+                    },
+                    {
+                        "componentTypeId": "com.vmware.csp.iaas.blueprint.service",
+                        "componentId": null,
+                        "classId": "Infrastructure.Compute.Machine.MachineDisk",
+                        "typeFilter": null,
+                        "data": {
+                            "capacity": 5,
+                            "custom_properties": null,
+                            "id": 1569333013614,
+                            "initial_location": "",
+                            "is_clone": true,
+                            "label": "Hard disk 3",
+                            "storage_reservation_policy": "",
+                            "userCreated": false,
+                            "volumeId": 2
+                        }
+                    },
+                    {
+                        "componentTypeId": "com.vmware.csp.iaas.blueprint.service",
+                        "componentId": null,
+                        "classId": "Infrastructure.Compute.Machine.MachineDisk",
+                        "typeFilter": null,
+                        "data": {
+                            "capacity": 5,
+                            "custom_properties": null,
+                            "id": 1569333013616,
+                            "initial_location": "",
+                            "is_clone": true,
+                            "label": "Hard disk 4",
+                            "storage_reservation_policy": "",
+                            "userCreated": false,
+                            "volumeId": 3
+                        }
+                    }
+                ],
+                "display_location": false,
+                "guest_customization_specification": "rhel",
+                "max_network_adapters": -1,
+                "max_per_user": 0,
+                "max_volumes": 60,
+                "memory": 8192,
+                "nics": [
+                    {
+                        "componentTypeId": "com.vmware.csp.iaas.blueprint.service",
+                        "componentId": null,
+                        "classId": "Infrastructure.Compute.Machine.Nic",
+                        "typeFilter": null,
+                        "data": {
+                            "address": "",
+                            "assignment_type": "Static",
+                            "id": 0,
+                            "load_balancing": "",
+                            "network": null,
+                            "network_profile": null
+                        }
+                    }
+                ],
+                "os_arch": "x86_64",
+                "os_distribution": null,
+                "os_type": "Linux",
+                "os_version": null,
+                "ovfAuthNeeded": false,
+                "ovf_proxy_endpoint": null,
+                "ovf_url": null,
+                "ovf_url_pwd": null,
+                "ovf_url_username": null,
+                "ovf_use_proxy": false,
+                "property_groups": null,
+                "reservation_policy": null,
+                "security_groups": [],
+                "security_tags": [],
+                "snapshot_name": null,
+                "source_machine_external_snapshot": null,
+                "source_machine_vmsnapshot": null,
+                "storage": 101
+            }
+        },
+        "_leaseDays": null,
+        "_number_of_instances": 1
+    }
+}
