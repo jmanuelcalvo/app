@@ -1,8 +1,0 @@
-[client]
-port = 8080, /var/lib/rhel.sock, /var/lib/rhel.pid
-socket = /var/lib/rhel.sock
-[rheld]
-port = 8080
-datadir = /opt/rhel
-socket = /var/lib/rhel.sock
-pid-file = /var/lib/rhel.pid
