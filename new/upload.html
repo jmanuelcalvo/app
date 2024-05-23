@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar Imágenes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo Genérico" class="logo">
+    </header>
+    <main>
+        <h1>Cargar Imágenes</h1>
+        <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="photo" id="photoInput" accept="image/*" capture="environment">
+            <button type="submit">Subir Foto</button>
+        </form>
+    </main>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            const photoInput = document.getElementById('photoInput');
+            if (photoInput.files.length === 0) {
+                event.preventDefault();
+                alert('Por favor, seleccione una foto.');
+            }
+        });
+    </script>
+</body>
+</html>
