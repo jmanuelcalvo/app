@@ -1,47 +1,52 @@
 trigger:
-- main
+- master
 
+#pool:
+#  vmImage: 'ubuntu-latest'
 pool:
   name: Local Agent
 
-variables:
-  OPENSHIFT_URL: '$(OPENSHIFT_URL)'   # Reemplaza con tu URL real
-  OPENSHIFT_TOKEN: '$(OPENSHIFT_TOKEN)'          # Configura como variable secreta
-  OPENSHIFT_NAMESPACE: '$(OPENSHIFT_NAMESPACE)'                 # Cambia si usas otro namespace
+#variables:
+#  OPENSHIFT_URL: '$(OPENSHIFT_URL)'   # Reemplaza con tu URL real
+#  OPENSHIFT_TOKEN: '$(OPENSHIFT_TOKEN)'          # Configura como variable secreta
+#  OPENSHIFT_NAMESPACE: '$(OPENSHIFT_NAMESPACE)'                 # Cambia si usas otro namespace
 
 steps:
-- task: oc-cmd@2
-  inputs:
-    connectionType: 'OpenShift Connection Service'
-    openshiftService: 'OpenShift cluster'
-    version: '4.2'
-    cmd: 'oc project jcalvo-dev'
-  displayName: Switch to myapp project
-- task: oc-cmd@2
-  inputs:
-    connectionType: 'OpenShift Connection Service'
-    openshiftService: 'OpenShift cluster'
-    version: '4.2'
-    cmd: 'oc new-app https://github.com/jmanuelcalvo/app.git'
-    ignoreFlag: true
-- task: oc-cmd@2
-  inputs:
-    connectionType: 'OpenShift Connection Service'
-    openshiftService: 'OpenShift cluster'
-    version: '4.2'
-    cmd: 'oc expose svc app'
-    ignoreFlag: true
-  displayName: Create route
-- task: oc-cmd@2
-  inputs:
-    connectionType: 'OpenShift Connection Service'
-    openshiftService: 'OpenShift cluster'
-    version: '4.2'
-    cmd: 'oc start-build app --follow'
-  displayName: Start new build
-- task: oc-cmd@2
-  inputs:
-    connectionType: 'OpenShift Connection Service'
-    openshiftService: 'OpenShift cluster'
-    version: '4.2'
-    cmd: 'oc status'
+
+# Login a OpenShift
+- script: |
+    oc login $(OPENSHIFT_URL) --token=$(OPENSHIFT_TOKEN) --insecure-skip-tls-verify
+    oc project $(OPENSHIFT_NAMESPACE)
+  displayName: 'Login en OpenShift'
+
+# Crear nueva app desde GitHub
+- script: |
+    if oc get dc app >/dev/null 2>&1; then
+      echo "La app ya existe, no se ejecuta 'oc new-app'."
+    else
+      echo "La app no existe, creando..."
+      oc new-app php~https://github.com/jmanuelcalvo/app.git -l name=app
+    fi
+  displayName: 'Crear nueva app solo si no existe'
+
+# Iniciar build manual
+#- script: |
+#    oc start-build app --follow
+#  displayName: 'Iniciar build'
+
+# Publicar la ruta
+- script: |
+    oc expose svc app
+  displayName: 'Exponer el servicio a Internet'
+
+# Publicar la ruta tipo Edge
+- script: |
+    oc patch route app -p '{"spec":{"tls":{"termination":"edge","insecureEdgeTerminationPolicy":"Redirect"}}}'
+  displayName: 'Exponer el servicio a Internet'
+
+
+
+# Ver estado de la app
+- script: |
+    oc status
+  displayName: 'Ver estado del despliegue'
