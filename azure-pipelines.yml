@@ -2,7 +2,12 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: Local Agent
+
+variables:
+  OPENSHIFT_URL: '$(OPENSHIFT_URL)'   # Reemplaza con tu URL real
+  OPENSHIFT_TOKEN: '$(OPENSHIFT_TOKEN)'          # Configura como variable secreta
+  OPENSHIFT_NAMESPACE: '$(OPENSHIFT_NAMESPACE)'                 # Cambia si usas otro namespace
 
 steps:
 - task: oc-cmd@2
@@ -17,14 +22,14 @@ steps:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'OpenShift cluster'
     version: '4.2'
-    cmd: 'oc new-app https://github.com/Bashayr29/simple-app.git'
+    cmd: 'oc new-app https://github.com/jmanuelcalvo/app.git'
     ignoreFlag: true
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'OpenShift cluster'
     version: '4.2'
-    cmd: 'oc expose svc simple-app'
+    cmd: 'oc expose svc app'
     ignoreFlag: true
   displayName: Create route
 - task: oc-cmd@2
@@ -32,7 +37,7 @@ steps:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'OpenShift cluster'
     version: '4.2'
-    cmd: 'oc start-build simple-app --follow'
+    cmd: 'oc start-build app --follow'
   displayName: Start new build
 - task: oc-cmd@2
   inputs:
